@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SchoolIn</string>
+    <string name="home_text1">Über uns:</string>
+    <string name="home_text2">Über SchoolIn:</string>
 </resources>
