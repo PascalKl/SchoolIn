@@ -2,17 +2,17 @@
 <menu xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/page_home"
         android:enabled="true"
         android:icon="@drawable/homeiconsmall"
         android:title="Start"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/page_search"
         android:enabled="true"
         android:icon="@drawable/search"
         android:title="Suche"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/page_user"
         android:enabled="true"
         android:icon="@drawable/user"
         android:title="Schulaccount"

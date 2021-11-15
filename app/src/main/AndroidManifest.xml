@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolIn">
         <activity
+            android:name=".MainActivity_searchpage"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
