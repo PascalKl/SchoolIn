@@ -5,11 +5,12 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         >
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SchoolIn2"
+            android:text="SchoolIn"
             android:textSize="32dp"
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal|center_vertical"
