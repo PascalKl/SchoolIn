@@ -3,10 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/drawable/navigationbutton_style.xml" value="0.3375" />
-        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.335" />
-        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.32135416666666666" />
-        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.21739130434782608" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/homeboxbg.xml" value="0.4036458333333333" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main_searchpage.xml" value="0.276268115942029" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3875" />
       </map>
     </option>
   </component>
