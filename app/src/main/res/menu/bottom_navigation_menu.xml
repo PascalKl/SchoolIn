@@ -8,7 +8,7 @@
     <item
         android:id="@+id/page_search"
         android:icon="@drawable/search"
-        android:title="Suche"/>
+        android:title="Suche" />
     <item
         android:id="@+id/page_user"
         android:enabled="true"

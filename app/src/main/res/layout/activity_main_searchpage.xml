@@ -9,19 +9,7 @@
         android:layout_height="fill_parent"
         android:background="@color/white"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_navigation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                app:menu="@menu/bottom_navigation_menu"
-                android:layout_alignParentBottom="true"
-                />
-        </RelativeLayout>
+        <include layout="@layout/navbottom"/>
     </LinearLayout>
 </ScrollView>

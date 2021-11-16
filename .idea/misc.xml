@@ -4,8 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/homeboxbg.xml" value="0.4036458333333333" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/navitemstyle.xml" value="0.4036458333333333" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/navstyle.xml" value="0.4036458333333333" />
         <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main2.xml" value="0.276268115942029" />
         <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main_searchpage.xml" value="0.276268115942029" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/navbottom.xml" value="0.276268115942029" />
         <entry key="..\:/pasca/SchoolIn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3875" />
       </map>
     </option>
