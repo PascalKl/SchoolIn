@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ramotion.foldingcell.FoldingCell;
 
 public class MainActivity_searchpage extends AppCompatActivity {
 
@@ -17,6 +20,19 @@ public class MainActivity_searchpage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_searchpage);
+
+        // get our folding cell
+        final FoldingCell fc = (FoldingCell) findViewById(R.id.folding_cell);
+        //Customize folding cell
+        fc.initialize(1000, Color.GRAY, 1);
+        // attach click listener to folding cell
+        fc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fc.toggle(false);
+            }
+        });
+
 
         //Hide Actionbar
         getSupportActionBar().hide();
