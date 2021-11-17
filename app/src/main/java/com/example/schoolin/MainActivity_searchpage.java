@@ -24,7 +24,7 @@ public class MainActivity_searchpage extends AppCompatActivity {
         // get our folding cell
         final FoldingCell fc = (FoldingCell) findViewById(R.id.folding_cell);
         //Customize folding cell
-        fc.initialize(1000, Color.GRAY, 1);
+        fc.initialize(1000, Color.rgb(219, 219, 219), 1);
         // attach click listener to folding cell
         fc.setOnClickListener(new View.OnClickListener() {
             @Override
