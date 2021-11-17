@@ -27,7 +27,7 @@ public class MainActivity_searchpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_searchpage);
 
-        //Datenbank
+        //Database
         searchpageMemo testMemo = new searchpageMemo("Theodor-Litt-Schule", "Neumünster", 1);
         Log.d(LOG_TAG, "Inhalt der Testmemo:" + testMemo.toString());
 
@@ -73,5 +73,7 @@ public class MainActivity_searchpage extends AppCompatActivity {
                 return true;
             }
         });
+
     }
+
 }
