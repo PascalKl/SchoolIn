@@ -16,11 +16,11 @@ import com.ramotion.foldingcell.FoldingCell;
 
 public class MainActivity_searchpage extends AppCompatActivity {
 
-    //Datenbank
+    //Database
     public static final String LOG_TAG = MainActivity_searchpage.class.getSimpleName();
 
     private searchpageDataSource dataSource;
-
+    //
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,12 @@ public class MainActivity_searchpage extends AppCompatActivity {
 
         //Database
         searchpageMemo testMemo = new searchpageMemo("Theodor-Litt-Schule", "Neumünster", 1);
-        Log.d(LOG_TAG, "Inhalt der Testmemo:" + testMemo.toString());
+        Log.d(LOG_TAG, "Content of testMemo:" + testMemo.toString());
 
         dataSource = new searchpageDataSource(this);
+        //
 
+        //Foldingcell
         // get our folding cell
         final FoldingCell fc = (FoldingCell) findViewById(R.id.folding_cell);
         //Customize folding cell
@@ -49,6 +51,7 @@ public class MainActivity_searchpage extends AppCompatActivity {
         //Hide Actionbar
         getSupportActionBar().hide();
 
+        //Bottom Navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setSelectedItemId(R.id.page_search);
