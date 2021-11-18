@@ -28,10 +28,10 @@ public class MainActivity_searchpage extends AppCompatActivity {
         setContentView(R.layout.activity_main_searchpage);
 
         //Database
-        searchpageMemo testMemo = new searchpageMemo("Theodor-Litt-Schule", "Neumünster", 1);
-        Log.d(LOG_TAG, "Content of testMemo:" + testMemo.toString());
+        //searchpageMemo testMemo = new searchpageMemo("Theodor-Litt-Schule", "Neumünster", 1);
+        //Log.d(LOG_TAG, "Content of testMemo:" + testMemo.toString());
 
-        dataSource = new searchpageDataSource(this);
+        //dataSource = new searchpageDataSource(this);
         //
 
         //Foldingcell

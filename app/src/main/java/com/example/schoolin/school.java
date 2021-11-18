@@ -1,37 +1,37 @@
 package com.example.schoolin;
 
-public class searchpageMemo {
+public class school {
     private String schule;
     private String standort;
     private long id;
 
-    public searchpageMemo(String schule, String standort, long id) {
+    public school(String schule, String standort, long id) {
         this.schule = schule;
         this.standort = standort;
         this.id = id;
     }
 
-    //Get- & Set-Methode für schule
+    //Get- & Set-Methode for school
 
-    public String getSchule() {
+    public String getSchool() {
         return schule;
     }
 
-    public void setSchule(String schule) {
+    public void setSchool(String schule) {
         this.schule = schule;
     }
 
-    //Get- & Set-Methode für standort
+    //Get- & Set-Methode for location
 
-    public String getStandort() {
+    public String getLocation() {
         return standort;
     }
 
-    public void setStandort(String standort) {
+    public void setLocation(String standort) {
         this.standort = standort;
     }
 
-    //Get- & Set-Methode für id
+    //Get- & Set-Methode for id
 
     public long getId() {
         return id;
