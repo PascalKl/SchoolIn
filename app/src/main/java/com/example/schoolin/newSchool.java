@@ -2,6 +2,7 @@ package com.example.schoolin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.os.Bundle;
 
 public class newSchool extends AppCompatActivity {

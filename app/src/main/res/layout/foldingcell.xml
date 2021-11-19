@@ -81,6 +81,7 @@
                         android:layout_height="wrap_content"
                         android:text="Schulname"
                         style="@style/caption1"
+                        android:id="@+id/schoolname_fc"
                         android:gravity="left"
                         android:textColor="@color/white"/>
                     <TextView
@@ -89,7 +90,8 @@
                         android:text="  Ort"
                         android:textColor="@color/white"
                         android:drawableTint="@color/white"
-                        android:drawableLeft="@drawable/location"/>
+                        android:drawableLeft="@drawable/location"
+                        android:id="@+id/location_fc"/>
                 </LinearLayout>
                 <ImageView
                     android:id="@+id/downarrow2"

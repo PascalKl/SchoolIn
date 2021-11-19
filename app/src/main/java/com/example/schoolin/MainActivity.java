@@ -37,8 +37,8 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, MainActivity_searchpage.class));
                         break;
                     case R.id.page_user:
-                        //navigate to user (school) page
-                        //startActivity(new Intent(MainActivity.this, MainActivity_userpage.class));
+                        //navigate to user (School) page
+                        startActivity(new Intent(MainActivity.this, newSchool.class));
                         break;
                 }
                 return true;

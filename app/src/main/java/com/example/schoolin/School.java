@@ -1,17 +1,22 @@
 package com.example.schoolin;
 
-public class school {
+import java.io.Serializable;
+
+public class School implements Serializable {
     private String schule;
     private String standort;
     private long id;
 
-    public school(String schule, String standort, long id) {
+    public School(String schule, String location) {
         this.schule = schule;
-        this.standort = standort;
-        this.id = id;
+        this.standort = location;
     }
 
-    //Get- & Set-Methode for school
+    public School() {
+
+    }
+
+    //Get- & Set-Methode for School
 
     public String getSchool() {
         return schule;

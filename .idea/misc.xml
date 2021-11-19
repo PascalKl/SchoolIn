@@ -4,8 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/drawable/homeboxbg.xml" value="0.2064814814814815" />
+        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/drawable/homescreenbox.xml" value="0.3323076923076923" />
+        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_edit_school.xml" value="0.27853260869565216" />
         <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.2848731884057971" />
-        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_main_searchpage.xml" value="0.335" />
+        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_main_searchpage.xml" value="0.25" />
+        <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/activity_new_school.xml" value="0.25" />
         <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/foldingcell.xml" value="0.2848731884057971" />
         <entry key="..\:/Users/Admin/Desktop/SchoolIn/app/src/main/res/layout/navbottom.xml" value="0.32135416666666666" />
         <entry key="..\:/Users/nilo0/AndroidStudioProjects/SchoolIn/app/src/main/res/drawable/boxhomescreen.xml" value="0.1648148148148148" />
