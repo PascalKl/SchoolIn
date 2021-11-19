@@ -49,6 +49,7 @@ public class MainActivity_searchpage extends AppCompatActivity{
     private Button schoolDeleteButton;
     private Button schoolCancelButton;
     private View.OnClickListener listener;
+    private View.OnClickListener listener1;
 
     private ListView schoolList;
     private Cursor schoolCursor;
@@ -104,7 +105,7 @@ public class MainActivity_searchpage extends AppCompatActivity{
                         break;
                     case R.id.page_user:
                         //navigate to user (School) page
-                        //startActivity(new Intent(MainActivity.this, MainActivity_userpage.class));
+                        startActivity(new Intent(MainActivity_searchpage.this, newSchool.class));
                         break;
                 }
                 return true;
@@ -125,31 +126,25 @@ public class MainActivity_searchpage extends AppCompatActivity{
     //
     //Database new entry
 
-    private void schoolNewDialog(){
-        final Dialog dialog = new Dialog(MainActivity_searchpage.this, R.style.textStandard);
+    public void schoolNewDialog(){
+        final Dialog dialog = new Dialog(MainActivity_searchpage.this);
         dialog.setContentView(R.layout.activity_new_school);
 
-        dialog.setTitle("School");
+        Log.d(LOG_TAG, "Created TEST1");
+
+        dialog.setTitle("schools");
 
         schoolEditText = (EditText) dialog.findViewById(R.id.schoolname_editText);
         locationEditText = (EditText) dialog.findViewById(R.id.location_editText);
 
         schoolNewCreate = (Button) dialog.findViewById(R.id.schoolCreate);
-
-        schoolNewCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 schoolName = schoolEditText.getText().toString();
                 location = locationEditText.getText().toString();
 
                 saveAndShow();
-                dialog.dismiss();
-            }
-        });
-    }
+              }
     public void saveAndShow() {
         school = new School(schoolName, location);
-
         schoolData = schoolSentence(school);
         dataMethods.pasteData(TABLE_NAME, schoolData);
         schoolCursor = dataMethods.showTable(TABLE_NAME, columnSelect, sortString);

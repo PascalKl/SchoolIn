@@ -18,6 +18,7 @@ public class searchpageDataSource {
         dbHelper = new searchpageDbHelper(context);
         dbRead = dbHelper.getReadableDatabase();
         dbWrite = dbHelper.getWritableDatabase();
+        Log.d(LOG_TAG, "Test2!! ");
     }
 
     public Cursor showTable (String TABLE_NAME, String [] column, String sort) {
