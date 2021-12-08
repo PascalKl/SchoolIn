@@ -6,11 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.BottomNavigationView.OnNavigationItemSelectedListener;
-import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.page_user:
                         //navigate to user (School) page
-                        startActivity(new Intent(MainActivity.this, newSchool.class));
+                        startActivity(new Intent(MainActivity.this, newSchoolActivity.class));
                         break;
                 }
                 return true;

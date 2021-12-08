@@ -9,13 +9,13 @@ import android.util.Log;
 public class searchpageDataSource {
     private static final String LOG_TAG = searchpageDataSource.class.getSimpleName();
 
-    private searchpageDbHelper dbHelper;
+    private DbHelper dbHelper;
     private SQLiteDatabase dbRead;
     private SQLiteDatabase dbWrite;
     private Cursor cursor;
 
     public searchpageDataSource(Context context){
-        dbHelper = new searchpageDbHelper(context);
+        dbHelper = new DbHelper(context);
         dbRead = dbHelper.getReadableDatabase();
         dbWrite = dbHelper.getWritableDatabase();
         Log.d(LOG_TAG, "Test2!! ");

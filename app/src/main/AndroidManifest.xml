@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SchoolIn">
         <activity
-            android:name=".newSchool"
+            android:name=".newSchoolActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity_searchpage"
