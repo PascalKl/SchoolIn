@@ -19,7 +19,13 @@
         <entry key="..\:/Users/nilo0/AndroidStudioProjects/SchoolIn/app/src/main/res/layout/activity_main_searchpage.xml" value="0.375" />
         <entry key="..\:/Users/nilo0/AndroidStudioProjects/SchoolIn/app/src/main/res/layout/activity_new_school.xml" value="0.45" />
         <entry key="..\:/Users/nilo0/AndroidStudioProjects/SchoolIn/app/src/main/res/layout/navbottom.xml" value="0.2318840579710145" />
-        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.21739130434782608" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/homeboxbg.xml" value="0.39166666666666666" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/navitemstyle.xml" value="0.22760416666666666" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/startbg.xml" value="0.22760416666666666" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/drawable/startboxbg.xml" value="0.22760416666666666" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/layout/navbottom.xml" value="0.10283687943262411" />
+        <entry key="..\:/pasca/SchoolIn/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.1787037037037037" />
       </map>
     </option>
   </component>
