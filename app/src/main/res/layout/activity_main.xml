@@ -20,24 +20,7 @@
             android:layout_height="300dp"
             android:layout_marginTop="-15dp"
             android:src="@drawable/bibstartbg"/>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/startboxbg"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:padding="30dp"
-            android:layout_marginTop="-60dp">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Willkommen"
-                android:textSize="32dp"
-                android:textColor="@color/black"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/gilroysemibold"
-                android:layout_marginLeft="10dp"
-                />
-        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +28,6 @@
             android:textSize="24dp"
             android:textColor="@color/black"
             android:layout_marginTop="10dp"
-            android:fontFamily="@font/gilroysemibold"
             android:layout_marginLeft="10dp"
             />
         <LinearLayout
@@ -80,14 +62,12 @@
                             style="@style/textStandard"
                             android:textColor="@color/black"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/gilroybold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Standort"
                             style="@style/textStandard"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/gilroysemibold"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -108,14 +88,12 @@
                             style="@style/textStandard"
                             android:textColor="@color/black"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/gilroybold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Standort"
                             style="@style/textStandard"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/gilroysemibold"/>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -136,14 +114,12 @@
                             style="@style/textStandard"
                             android:textColor="@color/black"
                             android:layout_marginTop="15dp"
-                            android:fontFamily="@font/gilroybold"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Standort"
                             style="@style/textStandard"
                             android:layout_marginTop="5dp"
-                            android:fontFamily="@font/gilroysemibold"/>
                     </LinearLayout>
                 </LinearLayout>
             </HorizontalScrollView>
