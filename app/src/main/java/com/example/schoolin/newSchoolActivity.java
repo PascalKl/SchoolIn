@@ -15,7 +15,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class newSchoolActivity extends AppCompatActivity {
 
     DbHelper db;
-    //Datentypen
     private EditText editSchoolName;
     private EditText editLocation;
     private EditText editEducation;
@@ -55,7 +54,7 @@ public class newSchoolActivity extends AppCompatActivity {
         //Bottom Navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-        bottomNavigationView.setSelectedItemId(R.id.page_search);
+        bottomNavigationView.setSelectedItemId(R.id.page_user);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
