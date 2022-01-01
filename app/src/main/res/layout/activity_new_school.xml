@@ -69,13 +69,29 @@
                 <TextView
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:text="Bildungsgang:"
+                    android:text="Bildungsgänge:"
                     style="@style/textStandard"/>
-                <EditText
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <Spinner
+                    android:id="@+id/education1_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                <Spinner
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/education2_spinner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal|center_vertical"
-                    android:id="@+id/school_education"/>
+                    android:visibility="gone"/>
+                <Spinner
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:id="@+id/education3_spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+                </LinearLayout>
             </LinearLayout>
             <Button
                 android:layout_width="match_parent"

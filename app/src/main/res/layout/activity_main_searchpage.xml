@@ -3,11 +3,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="Suchen..."
+            android:id="@+id/search"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Suchen"
+            android:id="@+id/search_bt"/>
+    </LinearLayout>
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
     android:layout_marginBottom="56dp"
+    android:layout_marginTop="45dp"
     android:background="@color/white">
     <LinearLayout
         android:orientation="vertical"
@@ -17,7 +33,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         >
         <ListView
-            android:layout_height="wrap_content"
+            android:layout_height="700dp"
             android:layout_width="match_parent"
             android:id="@+id/schoollist"/>
     </LinearLayout>

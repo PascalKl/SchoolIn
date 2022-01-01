@@ -8,78 +8,72 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class MainActivity_searchpage extends AppCompatActivity{
 
-    private static final String LOG_TAG = DbHelper.class.getSimpleName();
+    ListView lv_school;
 
-    private final String TABLE_NAME = "schools";
-    private final String[] column = new String[]{"_id", "school", "location"};
-
-    private final String sortString = column[1];
-
-    private final String[] columnSelect = new String[] {column[0], column[1], column[2]};
-
-    private String schoolName, location;
-
-    private searchpageDataSource dataMethods;
-    private School school;
-    private Button schoolNewCreate;
-
-    private EditText schoolEditText;
-    private EditText locationEditText;
-
-    private EditText schoolnameEdit;
-    private EditText locationEdit;
-    private Button schoolRefereshButton;
-    private Button schoolDeleteButton;
-    private Button schoolCancelButton;
-    private View.OnClickListener listener;
-    private View.OnClickListener listener1;
-
-    private ListView schoolList;
-    private Cursor schoolCursor;
-    private ContentValues schoolData;
-    private SimpleCursorAdapter adapter;
+    DataBaseHelper dataBaseHelper;
+    EditText searchConsole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_searchpage);
 
-        schoolList = (ListView) findViewById(R.id.schoollist);
+        lv_school = (ListView) findViewById(R.id.schoollist);
+        searchConsole = (EditText) findViewById(R.id.search);
 
-        dataMethods = new searchpageDataSource(MainActivity_searchpage.this);
+        dataBaseHelper = new DataBaseHelper(MainActivity_searchpage.this);
+        ShowSchoolOnListView(dataBaseHelper);
 
-        //Database
-        showListView();
+        searchConsole.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getSearchResult(searchConsole.getText().toString()));
+                lv_school.setAdapter(customAdapter);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(searchConsole.getText().toString().equals("")){
+                    ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone());
+                    lv_school.setAdapter(customAdapter);
+                }
+            }
+        });
+
+        lv_school.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                school clickedCustomer = (school) parent.getItemAtPosition(position);
+                dataBaseHelper.deleteOne(clickedCustomer);
+                ShowSchoolOnListView(dataBaseHelper);
+                Toast.makeText(MainActivity_searchpage.this, "Deleted " + clickedCustomer, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         //
-
-        //Foldingcell
-        //get our folding cell
-        //final FoldingCell fc = (FoldingCell) findViewById(R.id.folding_cell);
-        //Customize folding cell
-        //fc.initialize(1000, Color.rgb(219, 219, 219), 1);
-        // attach click listener to folding cell
-        //fc.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        fc.toggle(false);
-        //    }
-        //});
-
-
         //Hide Actionbar
         getSupportActionBar().hide();
 
@@ -110,138 +104,10 @@ public class MainActivity_searchpage extends AppCompatActivity{
         });
 
     }
-    //ListView
-    public void showListView() {
-        String [] listColumn = new String[]{column[0], column[1], column[2]};
 
-        schoolCursor = dataMethods.showTable(TABLE_NAME , columnSelect, sortString);
 
-        adapter = new SimpleCursorAdapter(MainActivity_searchpage.this, R.layout.foldingcell, schoolCursor, listColumn, new int[]{ R.id.schoolname_fc, R.id.location_fc}, CursorAdapter.NO_SELECTION);
-
-        schoolList.setAdapter(adapter);
+    public void ShowSchoolOnListView(DataBaseHelper dataBaseHelper) {
+        ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone());
+        lv_school.setAdapter(customAdapter);
     }
-    //
-    //Database new entry
-
-    public void schoolNewDialog(){
-        final Dialog dialog = new Dialog(MainActivity_searchpage.this);
-        dialog.setContentView(R.layout.activity_new_school);
-
-        Log.d(LOG_TAG, "Created TEST1");
-
-        dialog.setTitle("schools");
-
-        schoolEditText = (EditText) dialog.findViewById(R.id.schoolname_editText);
-        locationEditText = (EditText) dialog.findViewById(R.id.location_editText);
-
-        schoolNewCreate = (Button) dialog.findViewById(R.id.schoolCreate);
-                schoolName = schoolEditText.getText().toString();
-                location = locationEditText.getText().toString();
-
-                //saveAndShow();
-              }
-    //public void saveAndShow() {
-        //school = new School(schoolName, location );
-       // schoolData = schoolSentence(school);
-        //dataMethods.pasteData(TABLE_NAME, schoolData);
-        //schoolCursor = dataMethods.showTable(TABLE_NAME, columnSelect, sortString);
-        //adapter.changeCursor(schoolCursor);
-    //}
-
-    public ContentValues schoolSentence(School school){
-        ContentValues data = new ContentValues();
-        data.put("school", school.getSchoolName());
-        data.put("location", school.getLocation());
-
-        Log.d(LOG_TAG, "DbHelper has created: " + school.getSchoolName() + " with location " + school.getLocation());
-
-        return data;
-    }
-
-    public void showEditSaveDialog(long id) {
-        final Dialog dialog = new Dialog(MainActivity_searchpage. this, R.style. textStandard);
-
-        dialog.setContentView(R.layout.activity_edit_school);
-
-        dialog.setTitle("School");
-        schoolnameEdit = (EditText)dialog.findViewById(R.id.schoolname_edit_EditText);
-
-        locationEdit = (EditText)dialog.findViewById(R.id.location_edit_EditText);
-
-        schoolDeleteButton = (Button)dialog.findViewById(R.id.delSchool_Button);
-
-        schoolRefereshButton = (Button)dialog.findViewById(R.id.changeSchoolInformation_Button);
-
-        schoolCancelButton = (Button)dialog.findViewById(R.id.schoolEditCancel_Button);
-
-        schoolCursor = dataMethods.showData(TABLE_NAME, column, id);
-        schoolCursor.moveToFirst();
-
-        //school = schoolObject(schoolCursor);
-
-        schoolnameEdit.setText(school.getSchoolName());
-        locationEdit.setText(school.getLocation());
-
-        listener = new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                /*if(v == schoolDeleteButton){
-                    dataMethods.deleteData(TABLE_NAME, school.getEducation());
-                    showListView();
-                    dialog.dismiss();
-                } else
-                    if (v == schoolRefereshButton) {
-                    school.setSchoolName(schoolnameEdit.getText().toString());
-                    school.setLocation(locationEdit.getText().toString());
-
-                    schoolData = schoolSentence(school);
-
-                    dataMethods.changeData(TABLE_NAME, schoolData, school.getId());
-
-                    showListView();
-                    dialog.dismiss();
-                } else
-                    if (v == schoolCancelButton){
-                        dialog.dismiss();
-                    }*/
-            }
-        };
-        schoolCancelButton.setOnClickListener(listener);
-        schoolRefereshButton.setOnClickListener(listener);
-        schoolDeleteButton.setOnClickListener(listener);
-
-        dialog.show();
-    }
-
-    /*public School schoolObject(Cursor cursor){
-
-        School school = new School();
-
-        school.setEducation(cursor.getLong(0));
-        school.setSchoolName(cursor.getString(1));
-        school.setLocation(cursor.getString(2));
-
-        cursor.close();
-
-        return school;
-
-    } */
-
-    public void closeSchoolActivity() {
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("School", schoolName);
-        finish();
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        if(!schoolCursor.isClosed()){
-            schoolCursor.close();
-        }
-        dataMethods.close();
-    }
-    //
-
 }
