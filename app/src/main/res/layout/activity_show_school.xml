@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="15dp">
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/bin"
+            android:layout_margin="5dp"
+            android:id="@+id/deleteBt"/>
+        <TextView
+            android:layout_width="315dp"
+            android:layout_height="wrap_content"
+            android:text="Schulname"
+            android:textStyle="bold"
+            android:id="@+id/schoolName_showView"
+            style="@style/caption1"
+            />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/close"
+            android:layout_margin="5dp"
+            android:id="@+id/closeBt"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="120dp"
+            android:background="@drawable/homeboxbg"
+            android:src="@drawable/school"/>
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:text="Standort"
+            style="@style/textStandard"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/location_showView"
+            android:drawableLeft="@drawable/location"/>
+    </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/caption1"
+            android:text="Angebotene Profile"
+            android:textSize="20dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="left"/>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="240dp"
+            android:id="@+id/educationListView"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Beschreibung"
+            android:layout_margin="10dp"
+            style="@style/textStandard"
+            android:id="@+id/description_showView"/>
+        <Button
+            android:layout_marginTop="25dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Schulwebsite"
+            android:id="@+id/websiteBt"/>
+    </LinearLayout>
+</ScrollView>
+    <include layout="@layout/navbottom" />
+</RelativeLayout>

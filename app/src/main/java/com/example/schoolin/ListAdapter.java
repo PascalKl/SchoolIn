@@ -45,7 +45,7 @@ public class ListAdapter extends ArrayAdapter<school> {
                 tt2.setText(p.getLocation());
             }
             if (tt3 != null) {
-                tt3.setText(p.getEducation());
+                tt3.setText(p.getEducation1()+", "+p.getEducation2()+", "+p.getEducation3());
             }
         }
 

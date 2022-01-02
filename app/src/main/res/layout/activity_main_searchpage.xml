@@ -15,16 +15,55 @@
         <Button
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Suchen"
-            android:id="@+id/search_bt"/>
+            android:text="Filter"
+            android:id="@+id/filter_bt"/>
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="45dp"
+        android:visibility="gone"
+        android:id="@+id/linearlayout_checkbox">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Profilarten"
+            android:textSize="20dp"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MINT"
+                android:id="@+id/checkbox_mint"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sprachen"
+                android:id="@+id/checkbox_sprache"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gesellschaftswissenschaften"
+                android:id="@+id/checkbox_gesellwissenschaften"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ästhetische Profile (Kunst, Musik,etc.)"
+                android:id="@+id/checkbox_aesthetic"/>
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sport"
+                android:id="@+id/checkbox_sport"/>
+        </LinearLayout>
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true"
     android:layout_marginBottom="56dp"
     android:layout_marginTop="45dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:id="@+id/scrollview1">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
@@ -38,5 +77,6 @@
             android:id="@+id/schoollist"/>
     </LinearLayout>
 </ScrollView>
-    <include layout="@layout/navbottom"/>
+
+    <include layout="@layout/navbottom" />
 </RelativeLayout>

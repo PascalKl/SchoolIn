@@ -22,6 +22,15 @@
                 style="@style/caption1"
                 android:text="Neue Schule anlegen"
                 />
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:padding="15dp"
+                android:src="@drawable/school"
+                android:background="@drawable/circle"
+                android:layout_gravity="center"
+                android:id="@+id/schoolIMG"
+                />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -62,6 +71,25 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Link zur Website:\n (ohne https://)"
+                    style="@style/textStandard"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal|center_vertical"
+                    style="@style/textStandard"
+                    android:id="@+id/website_editText"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginLeft="10dp"
@@ -92,6 +120,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
                 </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp">
+                <TextView
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="Beschreibung:"
+                    style="@style/textStandard"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/textStandard"
+                    android:id="@+id/description_editText"
+                    android:inputType="textMultiLine"
+                    android:background="@drawable/border"
+                    android:padding="5dp"
+                    android:layout_marginTop="5dp"
+                    android:hint="Unsere Schule...\nWir bieten außerdem...\nSie benötigen...\n"
+                    />
             </LinearLayout>
             <Button
                 android:layout_width="match_parent"

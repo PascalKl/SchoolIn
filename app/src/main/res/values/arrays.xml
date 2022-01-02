@@ -13,4 +13,26 @@
         <item>Kunst/Musik</item>
         <item>Sport</item>
     </string-array>
+    <string-array name="mint">
+        <item>Informatik</item>
+        <item>Chemie</item>
+        <item>Biologie</item>
+        <item>Physik</item>
+    </string-array>
+    <string-array name="languages">
+        <item>Sprachen</item>
+    </string-array>
+    <string-array name="socialSciences">
+        <item>Geographie</item>
+        <item>Geschichte</item>
+        <item>Wirtschaft/Politik</item>
+    </string-array>
+    <string-array name="aesthetics">
+        <item>Kunst</item>
+        <item>Musik</item>
+        <item>Darstellendes Spiel</item>
+    </string-array>
+    <string-array name="PE">
+        <item>Sport</item>
+    </string-array>
 </resources>

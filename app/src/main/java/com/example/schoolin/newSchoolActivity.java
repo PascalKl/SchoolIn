@@ -2,7 +2,6 @@ package com.example.schoolin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,18 +10,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+import java.util.*;
 
 public class newSchoolActivity extends AppCompatActivity {
 
-    private EditText editLocation, /*editEducation,*/ editSchoolName;
+    private EditText editLocation, editSchoolName, editDescription, editWebsite;
     private Spinner education1, education2, education3;
-    private View.OnClickListener listener;
+    private View.OnClickListener listener, listenerPic;
     private Button createNewSchool;
+    //private ImageView schoolImg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +31,20 @@ public class newSchoolActivity extends AppCompatActivity {
 
         editSchoolName = (EditText) findViewById(R.id.schoolname_editText);
         editLocation = (EditText) findViewById(R.id.location_editText);
+        editDescription = (EditText) findViewById(R.id.description_editText);
+        editWebsite = (EditText) findViewById(R.id.website_editText);
         //editEducation = (EditText) findViewById(R.id.school_education);
+        //schoolImg = (ImageView) findViewById(R.id.schoolIMG);
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.education_array, android.R.layout.simple_spinner_item);
+        ArrayList<String> educationAr = new ArrayList<String>();
+        educationAr.add("Auswählen");
+        educationAr.addAll(Arrays.asList(getResources().getStringArray(R.array.PE)));
+        educationAr.addAll(Arrays.asList(getResources().getStringArray(R.array.languages)));
+        educationAr.addAll(Arrays.asList(getResources().getStringArray(R.array.socialSciences)));
+        educationAr.addAll(Arrays.asList(getResources().getStringArray(R.array.mint)));
+        educationAr.addAll(Arrays.asList(getResources().getStringArray(R.array.aesthetics)));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, educationAr);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         education1 = (Spinner) findViewById(R.id.education1_spinner);
         education2 = (Spinner) findViewById(R.id.education2_spinner);
@@ -48,6 +58,14 @@ public class newSchoolActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
+        /*listenerPic = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Later.
+
+            }
+        }; schoolImg.setOnClickListener(listenerPic);*/
+
         listener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,7 +74,7 @@ public class newSchoolActivity extends AppCompatActivity {
                 boolean cancel = false;
 
                 try {
-                    school = new school(-1, editSchoolName.getText().toString(), editLocation.getText().toString(),/* editEducation.getText().toString(),*/ getEducations());
+                    school = new school(-1, editSchoolName.getText().toString(), editLocation.getText().toString(), editDescription.getText().toString(), editWebsite.getText().toString(), getEducation1(), getEducation2(), getEducation3());
                     //Toast.makeText(newSchoolActivity.this, school.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
@@ -139,22 +157,25 @@ public class newSchoolActivity extends AppCompatActivity {
         });
     }
 
-    private String getEducations() {
-        String educations;
-        String Education1 = ", " + education1.getSelectedItem().toString();
-        if (Education1.equals("Auswählen")){
-            Education1 = "";
+    private String getEducation1() {
+        String education = education1.getSelectedItem().toString();
+        if (education.equals("Auswählen")){
+            education = "";
         }
-        String Education2 = ", " + education2.getSelectedItem().toString();
-        if (Education2.equals("Auswählen")){
-            Education2 = "";
+        return education;
+    }
+    private String getEducation2() {
+        String education = education2.getSelectedItem().toString();
+        if (education.equals("Auswählen")){
+            education = "";
         }
-        String Education3 = ", " + education3.getSelectedItem().toString();
-        if (Education3.equals("Auswählen")){
-            Education3 = "";
+        return education;
+    }
+    private String getEducation3() {
+        String education = education3.getSelectedItem().toString();
+        if (education.equals("Auswählen")){
+            education = "";
         }
-        educations = Education1 + Education2 + Education3;
-
-        return educations;
+        return education;
     }
 }

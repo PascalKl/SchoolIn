@@ -4,13 +4,21 @@ public class school {
     private int id;
     private String name;
     private String location;
-    private String education;
+    private String description;
+    private String website;
+    private String education1;
+    private String education2;
+    private String education3;
 
-    public school(int id, String name, String location, String schoolEducation) {
+    public school(int id, String name, String location, String description, String website, String education1, String education2, String education3) {
         this.id = id;
         this.name = name;
         this.location = location;
-        this.education = schoolEducation;
+        this.description = description;
+        this.website = website;
+        this.education1 = education1;
+        this.education2 = education2;
+        this.education3 = education3;
     }
 
     //to String is necessary for printing the contents of a class object
@@ -20,17 +28,51 @@ public class school {
         return
                 "id= " + id +
                         ", Name= " + name +
-                        ", Ort= " + location;
+                        ", Ort= " + location +
+                        ", Profile= " + education1 + ", " + education2 + ", " + education3;
     }
 
-    //getter & Setters
+    //Getter & Setters
 
-    public String getEducation() {
-        return education;
+
+    public String getDescription() {
+        return description;
     }
 
-    public void setEducation(String education) {
-        this.education = education;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
+    }
+
+    public String getEducation1() {
+        return education1;
+    }
+
+    public void setEducation1(String education1) {
+        this.education1 = education1;
+    }
+
+    public String getEducation2() {
+        return education2;
+    }
+
+    public void setEducation2(String education2) {
+        this.education2 = education2;
+    }
+
+    public String getEducation3() {
+        return education3;
+    }
+
+    public void setEducation3(String education3) {
+        this.education3 = education3;
     }
 
     public String getId() {
