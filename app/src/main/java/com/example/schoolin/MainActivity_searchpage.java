@@ -57,6 +57,7 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_searchpage);
 
+        //declare Buttons, ListViews and more
         filterBt = (Button) findViewById(R.id.filter_bt);
         lv_school = (ListView) findViewById(R.id.schoollist);
         searchConsole = (EditText) findViewById(R.id.search);
@@ -69,12 +70,15 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
         chbPE = (CheckBox) findViewById(R.id.checkbox_sport);
         chbLanguage = (CheckBox) findViewById(R.id.checkbox_sprache);
 
+        //deactivate filter view
         filterActive = false;
 
+        //declare databaseHelper
         dataBaseHelper = new DataBaseHelper(MainActivity_searchpage.this);
+        //initialize ListView
         ShowSchoolOnListView(dataBaseHelper);
 
-        searchConsole.addTextChangedListener(new TextWatcher() {
+        searchConsole.addTextChangedListener(new TextWatcher() { //filter search requests during typing
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -82,85 +86,84 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getSearchResult(searchConsole.getText().toString()));
+                ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getSearchResult(searchConsole.getText().toString()), 1);
                 lv_school.setAdapter(customAdapter);
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 if (searchConsole.getText().toString().equals("")) {
-                    ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone());
+                    ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone(), 1);
                     lv_school.setAdapter(customAdapter);
                 }
             }
         });
 
-        lv_school.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        lv_school.setOnItemClickListener(new AdapterView.OnItemClickListener() { // if item (school preview) is clicked...
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                school clickedSchoolId = (school) parent.getItemAtPosition(position);
-                Intent intent = new Intent(MainActivity_searchpage.this, showSchool.class);
-                school clickedSchool = dataBaseHelper.showOne(clickedSchoolId);
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {//...then...
+                school clickedSchoolId = (school) parent.getItemAtPosition(position); //get id of clicked school
+                Intent intent = new Intent(MainActivity_searchpage.this, showSchool.class);//declare new intent
+                school clickedSchool = dataBaseHelper.showOne(clickedSchoolId);//get clicked school class with id
+                //give any important data to showSchool-page
                 intent.putExtra("schoolID", clickedSchool.getId());
                 intent.putExtra("schoolName", clickedSchool.getName());
                 intent.putExtra("schoolLocation", clickedSchool.getLocation());
                 intent.putExtra("schoolDescription", clickedSchool.getDescription());
                 intent.putExtra("schoolWebsite", clickedSchool.getWebsite());
                 intent.putExtra("schoolFavorite",clickedSchool.isFavorite());
+                intent.putExtra("page","searchpage");
+                //get educations as arraylist
                 ArrayList<String> ar = new ArrayList<String>();
                 ar.add(clickedSchool.getEducation1());
                 ar.add(clickedSchool.getEducation2());
                 ar.add(clickedSchool.getEducation3());
-                intent.putStringArrayListExtra("educationAr", ar);
-                //intent.putExtra("schoolList", clickedSchool.getName());
-                startActivity(intent);
-                //dataBaseHelper.deleteOne(clickedCustomer);
-                //ShowSchoolOnListView(dataBaseHelper);
-                //Toast.makeText(MainActivity_searchpage.this, "Deleted " + clickedCustomer, Toast.LENGTH_SHORT).show();
+                intent.putStringArrayListExtra("educationAr", ar); //give the educations array to intent
+                startActivity(intent);//start the showSchool page
             }
         });
 
-        listenerFilter = new View.OnClickListener() {
+        listenerFilter = new View.OnClickListener() { //if filter button gets pushed
             @Override
             public void onClick(View v) {
                 RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) scrollView.getLayoutParams();
-                if (!filterActive) {
-                    layoutParams.setMargins(0, 1100, 0, 56);
-                    scrollView.setLayoutParams(layoutParams);
-                    filterActive = true;
-                    llCheckbox.setVisibility(View.VISIBLE);
-                    filterBt.setBackgroundColor(getResources().getColor(R.color.gray));
-                } else {
-                    filterBt.setBackgroundColor(getResources().getColor(R.color.lightblue));
-                    layoutParams.setMargins(0, 200, 0, 56);
-                    scrollView.setLayoutParams(layoutParams);
-                    ArrayList<Integer> arrayList = new ArrayList<Integer>();
+                if (!filterActive) { //is filter active? no?
+                    layoutParams.setMargins(0, 1100, 0, 56);//declare margins of layout using layoutparams
+                    scrollView.setLayoutParams(layoutParams);//change declared layoutparams
+                    filterActive = true;//set filter to active
+                    llCheckbox.setVisibility(View.VISIBLE); // set filter visible
+                    filterBt.setBackgroundColor(getResources().getColor(R.color.gray)); //change background color of filter button
+                } else {//is filter active? yes?
+                    filterBt.setBackgroundColor(getResources().getColor(R.color.lightblue));//change background color of filter button back
+                    layoutParams.setMargins(0, 200, 0, 56);//declare margins of layout using layoutparams
+                    scrollView.setLayoutParams(layoutParams);//change declared layoutparams
+                    ArrayList<Integer> arrayList = new ArrayList<Integer>();//declare new ArrayList
                     int i = 0;
-                    if (chbMINT.isChecked()) {
-                        arrayList.add(R.array.mint);
+                    if (chbMINT.isChecked()) {// is MINT filter active?
+                        arrayList.add(R.array.mint);// add all mint educations to array
                         i++;
                     }
-                    if (chbLanguage.isChecked()) {
-                        arrayList.add(R.array.languages);
+                    if (chbLanguage.isChecked()) {//is language filter active?
+                        arrayList.add(R.array.languages);// add all language educations to array
                         i++;
                     }
-                    if (chbSocialSciences.isChecked()) {
-                        arrayList.add(R.array.socialSciences);
+                    if (chbSocialSciences.isChecked()) {//is socialscienes filter active?
+                        arrayList.add(R.array.socialSciences);// add all social sciences educations to array
                         i++;
                     }
-                    if (chbAesthetics.isChecked()) {
-                        arrayList.add(R.array.aesthetics);
+                    if (chbAesthetics.isChecked()) {//is aesthetics filter active?
+                        arrayList.add(R.array.aesthetics);// add all aesthetics to array
                         i++;
                     }
-                    if (chbPE.isChecked()) {
+                    if (chbPE.isChecked()) {//is PE filter active?
                         arrayList.add(R.array.PE);
                         i++;
                     }
                     ListAdapter customAdapter;
                     if (i > 0) {
-                        customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getFilterResult(getAllEducationArray(arrayList)));
+                        customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getFilterResult(getAllEducationArray(arrayList)), 1);
                     } else {
-                        customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone());
+                        customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone(), 1);
                     }
                     lv_school.setAdapter(customAdapter);
                     filterActive = false;
@@ -177,9 +180,7 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
 
         //Bottom Navigation
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-
         bottomNavigationView.setSelectedItemId(R.id.page_search);
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -203,7 +204,7 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
     }
 
     public void ShowSchoolOnListView(DataBaseHelper dataBaseHelper) {
-        ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone());
+        ListAdapter customAdapter = new ListAdapter(MainActivity_searchpage.this, R.layout.listview_1, dataBaseHelper.getEveryone(), 1);
         lv_school.setAdapter(customAdapter);
     }
 

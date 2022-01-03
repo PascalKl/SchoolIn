@@ -55,6 +55,14 @@ public class showSchool extends AppCompatActivity {
 
         cancel = (ImageView) findViewById(R.id.closeBt);
         delete = (ImageView) findViewById(R.id.deleteBt);
+        String page = i.getStringExtra("page");
+        Intent backIntent;
+        if(page.equals("searchpage")){
+            backIntent = new Intent(showSchool.this,MainActivity_searchpage.class);
+        }
+        else{
+            backIntent = new Intent(showSchool.this,MainActivity.class);
+        }
         favorite = (ImageView) findViewById(R.id.favoriteBt);
         isFavorite = i.getBooleanExtra("schoolFavorite", false);
         if (isFavorite){
@@ -69,7 +77,7 @@ public class showSchool extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cancel.setColorFilter(getResources().getColor(R.color.red));
-                startActivity(new Intent(showSchool.this, MainActivity_searchpage.class));
+                startActivity(backIntent);
             }
         }; cancel.setOnClickListener(cancelListener);
 
@@ -81,7 +89,7 @@ public class showSchool extends AppCompatActivity {
                 }
                 delete.setColorFilter(getResources().getColor(R.color.red));
                 dataBaseHelper.deleteOne(schoolID);
-                startActivity(new Intent(showSchool.this, MainActivity_searchpage.class));
+                startActivity(backIntent);
             }
         }; delete.setOnClickListener(deleteListener);
 
@@ -122,6 +130,7 @@ public class showSchool extends AppCompatActivity {
         getSupportActionBar().hide();
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.page_search);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

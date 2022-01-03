@@ -272,12 +272,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.rawQuery(queryString, null);
-
         if (cursor.moveToFirst()){
             do {
-                if(
-                        cursor.getInt(5) == 1
-                ){
+
                     int customerID = cursor.getInt(0);
                     String schoolName = cursor.getString(1);
                     String schoolLocation = cursor.getString(2);
@@ -293,7 +290,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     String schoolEducation1 = cursor.getString(6);
                     String schoolEducation2 = cursor.getString(7);
                     String schoolEducation3 = cursor.getString(8);
-
+                if(schoolFavorite){
                     school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite,schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
                     returnList.add(newSchool);
                 }

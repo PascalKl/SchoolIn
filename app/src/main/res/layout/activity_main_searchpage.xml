@@ -74,7 +74,11 @@
         <ListView
             android:layout_height="700dp"
             android:layout_width="match_parent"
-            android:id="@+id/schoollist"/>
+            android:id="@+id/schoollist"
+            android:divider="@android:color/white"
+            android:dividerHeight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="15dp"/>
     </LinearLayout>
 </ScrollView>
 

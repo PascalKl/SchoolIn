@@ -26,6 +26,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/schoolLocation_favView"
         android:text="Standort"
+        android:drawableLeft="@drawable/location"
+        android:drawablePadding="15dp"
         style="@style/textStandard"
         android:layout_marginTop="5dp"/>
 </LinearLayout>

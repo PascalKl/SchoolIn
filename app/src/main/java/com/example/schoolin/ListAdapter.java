@@ -12,11 +12,13 @@ public class ListAdapter extends ArrayAdapter<school> {
 
     private int resourceLayout;
     private Context mContext;
+    private int mode;
 
-    public ListAdapter(Context context, int resource, List<school> schools) {
+    public ListAdapter(Context context, int resource, List<school> schools, int mode) {
         super(context, resource, schools);
         this.resourceLayout = resource;
         this.mContext = context;
+        this.mode = mode;
     }
 
     @Override
@@ -33,24 +35,29 @@ public class ListAdapter extends ArrayAdapter<school> {
         school p = getItem(position);
 
         if (p != null) {
+            TextView tt1 = (TextView) v.findViewById(R.id.tv_schoolname);
+            TextView tt2 = (TextView) v.findViewById(R.id.tv_schoollocation);
+            TextView tt3 = (TextView) v.findViewById(R.id.tv_schooleducation);
 
-                TextView tt1 = (TextView) v.findViewById(R.id.tv_schoolname);
-                TextView tt2 = (TextView) v.findViewById(R.id.tv_schoollocation);
-                TextView tt3 = (TextView) v.findViewById(R.id.tv_schooleducation);
+            if (tt1 != null) {
+                String i = p.getName().replace("-"," - ");
+                tt1.setText(i);
+            }
 
-                if (tt1 != null) {
-                    tt1.setText(p.getName());
+            if (tt2 != null) {
+                tt2.setText(p.getLocation());
+            }
+            if (tt3 != null) {
+                String i = p.getEducation1();
+                if(p.getEducation2().equals("") == false){
+                    i= i+", "+p.getEducation2();
                 }
-
-                if (tt2 != null) {
-                    tt2.setText(p.getLocation());
+                if(p.getEducation3().equals("") == false){
+                    i= i+", "+p.getEducation3();
                 }
-                if (tt3 != null) {
-                    tt3.setText(p.getEducation1() + ", " + p.getEducation2() + ", " + p.getEducation3());
-                }
+                tt3.setText(i);
+            }
         }
-
-
         return v;
     }
 }
