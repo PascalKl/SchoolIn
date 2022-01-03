@@ -74,7 +74,7 @@ public class newSchoolActivity extends AppCompatActivity {
                 boolean cancel = false;
 
                 try {
-                    school = new school(-1, editSchoolName.getText().toString(), editLocation.getText().toString(), editDescription.getText().toString(), editWebsite.getText().toString(), getEducation1(), getEducation2(), getEducation3());
+                    school = new school(-1, editSchoolName.getText().toString(), editLocation.getText().toString(), editDescription.getText().toString(), editWebsite.getText().toString(),false, getEducation1(), getEducation2(), getEducation3());
                     //Toast.makeText(newSchoolActivity.this, school.toString(), Toast.LENGTH_SHORT).show();
                 }
                 catch (Exception e){
@@ -89,7 +89,7 @@ public class newSchoolActivity extends AppCompatActivity {
                 if (cancel != true) {
                     boolean success = dataBaseHelper.addOne(school);
 
-                    Toast.makeText(newSchoolActivity.this, "Schule wurde hinzugefügt. " + success, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(newSchoolActivity.this, "Ihre Schule (" + editSchoolName.getText().toString() +") wurde hinzugefügt.", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(newSchoolActivity.this, MainActivity_searchpage.class));
                 }
                 else{

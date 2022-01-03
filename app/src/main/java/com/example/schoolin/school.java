@@ -6,16 +6,18 @@ public class school {
     private String location;
     private String description;
     private String website;
+    private boolean favorite;
     private String education1;
     private String education2;
     private String education3;
 
-    public school(int id, String name, String location, String description, String website, String education1, String education2, String education3) {
+    public school(int id, String name, String location, String description, String website, boolean favorite, String education1, String education2, String education3) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.description = description;
         this.website = website;
+        this.favorite = favorite;
         this.education1 = education1;
         this.education2 = education2;
         this.education3 = education3;
@@ -29,11 +31,21 @@ public class school {
                 "id= " + id +
                         ", Name= " + name +
                         ", Ort= " + location +
-                        ", Profile= " + education1 + ", " + education2 + ", " + education3;
+                        ", website=" + website +
+                        ", Profile= " + education1 + ", " + education2 + ", " + education3 +
+                        ", Description= " + description;
     }
 
     //Getter & Setters
 
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(boolean favorite) {
+        this.favorite = favorite;
+    }
 
     public String getDescription() {
         return description;

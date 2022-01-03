@@ -25,6 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String COLUMN_SCHOOL_LOCATION = "SCHOOL_LOCATION";
     public static final String COLUMN_SCHOOL_DESCRIPTION = "SCHOOL_DESCRIPTION";
     public static final String COLUMN_SCHOOL_WEBSITE= "SCHOOL_WEBSITE";
+    public static final String COLUMN_SCHOOL_FAVORITE = "SCHOOL_FAVORITE";
     public static final String COLUMN_SCHOOL_EDUCATION_1 = "SCHOOL_EDUCATION_1";
     public static final String COLUMN_SCHOOL_EDUCATION_2 = "SCHOOL_EDUCATION_2";
     public static final String COLUMN_SCHOOL_EDUCATION_3 = "SCHOOL_EDUCATION_3";
@@ -43,6 +44,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + COLUMN_SCHOOL_LOCATION + " TEXT, "
                 + COLUMN_SCHOOL_DESCRIPTION+ " TEXT, "
                 + COLUMN_SCHOOL_WEBSITE + " TEXT, "
+                + COLUMN_SCHOOL_FAVORITE + " INTEGER, "
                 + COLUMN_SCHOOL_EDUCATION_1 + " TEXT, "
                 + COLUMN_SCHOOL_EDUCATION_2 + " TEXT, "
                 + COLUMN_SCHOOL_EDUCATION_3 + " TEXT )";
@@ -65,6 +67,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put(COLUMN_SCHOOL_LOCATION, school.getLocation());
         cv.put(COLUMN_SCHOOL_DESCRIPTION, school.getDescription());
         cv.put(COLUMN_SCHOOL_WEBSITE, school.getWebsite());
+        cv.put(COLUMN_SCHOOL_FAVORITE, school.isFavorite());
         cv.put(COLUMN_SCHOOL_EDUCATION_1, school.getEducation1());
         cv.put(COLUMN_SCHOOL_EDUCATION_2, school.getEducation2());
         cv.put(COLUMN_SCHOOL_EDUCATION_3, school.getEducation3());
@@ -80,18 +83,14 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public boolean deleteOne(school school){
+    public void favoriteSchool(int schoolID, boolean isFavorite, Context context){
 
         SQLiteDatabase db = this.getWritableDatabase();
-        String queryString = "DELETE FROM " + SCHOOL_TABLE + " WHERE " + COLUMN_ID + " = " + school.getId();
-
-        Cursor cursor = db.rawQuery(queryString, null);
-        if ( cursor.moveToFirst()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        ContentValues cv = new ContentValues();
+        cv.put(COLUMN_SCHOOL_FAVORITE, isFavorite);
+        db.update(SCHOOL_TABLE, cv, COLUMN_ID+"=?",new String[] {String.valueOf(schoolID)});
+        Toast.makeText(context, cv+"", Toast.LENGTH_SHORT).show();
+        db.close();
     }
     public void deleteOne(int schoolID){
 
@@ -113,12 +112,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String schoolLocation = cursor.getString(2);
         String schoolDescription = cursor.getString(3);
         String schoolWebsite = cursor.getString(4);
-        String schoolEducation1 = cursor.getString(5);
-        String schoolEducation2 = cursor.getString(6);
-        String schoolEducation3 = cursor.getString(7);
+        boolean schoolFavorite;
+        if (cursor.getInt(5) == 0){
+            schoolFavorite = false;
+        }
+        else{
+            schoolFavorite = true;
+        }
+        String schoolEducation1 = cursor.getString(6);
+        String schoolEducation2 = cursor.getString(7);
+        String schoolEducation3 = cursor.getString(8);
         cursor.close();
         db.close();
-        return new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolEducation1, schoolEducation2, schoolEducation3);
+        return new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
     }
     public List<school> getEveryone() {
 
@@ -137,11 +143,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String schoolLocation = cursor.getString(2);
                 String schoolDescription = cursor.getString(3);
                 String schoolWebsite = cursor.getString(4);
-                String schoolEducation1 = cursor.getString(5);
-                String schoolEducation2 = cursor.getString(6);
-                String schoolEducation3 = cursor.getString(7);
+                boolean schoolFavorite;
+                if (cursor.getInt(5) == 0){
+                    schoolFavorite = false;
+                }
+                else{
+                    schoolFavorite = true;
+                }
+                String schoolEducation1 = cursor.getString(6);
+                String schoolEducation2 = cursor.getString(7);
+                String schoolEducation3 = cursor.getString(8);
 
-                school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolEducation1, schoolEducation2, schoolEducation3);
+                school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
                 returnList.add(newSchool);
 
             }
@@ -177,11 +190,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     String schoolLocation = cursor.getString(2);
                     String schoolDescription = cursor.getString(3);
                     String schoolWebsite = cursor.getString(4);
-                    String schoolEducation1 = cursor.getString(5);
-                    String schoolEducation2 = cursor.getString(6);
-                    String schoolEducation3 = cursor.getString(7);
+                    boolean schoolFavorite;
+                    if (cursor.getInt(5) == 0){
+                        schoolFavorite = false;
+                    }
+                    else{
+                        schoolFavorite = true;
+                    }
+                    String schoolEducation1 = cursor.getString(6);
+                    String schoolEducation2 = cursor.getString(7);
+                    String schoolEducation3 = cursor.getString(8);
 
-                    school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolEducation1, schoolEducation2, schoolEducation3);
+                    school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite,schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
                     returnList.add(newSchool);
                 }
             }
@@ -213,16 +233,68 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 String schoolLocation = cursor.getString(2);
                 String schoolDescription = cursor.getString(3);
                 String schoolWebsite = cursor.getString(4);
-                String schoolEducation1 = cursor.getString(5);
-                String schoolEducation2 = cursor.getString(6);
-                String schoolEducation3 = cursor.getString(7);
+                boolean schoolFavorite;
+                if (cursor.getInt(5) == 0){
+                    schoolFavorite = false;
+                }
+                else{
+                    schoolFavorite = true;
+                }
+                String schoolEducation1 = cursor.getString(6);
+                String schoolEducation2 = cursor.getString(7);
+                String schoolEducation3 = cursor.getString(8);
 
                 if(
                         FilterRequest.contains(schoolEducation1)
                         || FilterRequest.contains(schoolEducation2)
                         || FilterRequest.contains(schoolEducation3)
                 ){
-                    school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite, schoolEducation1, schoolEducation2, schoolEducation3);
+                    school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite,schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
+                    returnList.add(newSchool);
+                }
+            }
+            while(cursor.moveToNext());
+        }
+        else{
+            //failure. Nothing to show.
+        }
+
+        cursor.close();
+        db.close();
+        return returnList;
+    }
+
+    public List<school> getEveryoneIsFavorite() {
+        List<school> returnList = new ArrayList<>();
+
+        String queryString = "SELECT * FROM " + SCHOOL_TABLE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            do {
+                if(
+                        cursor.getInt(5) == 1
+                ){
+                    int customerID = cursor.getInt(0);
+                    String schoolName = cursor.getString(1);
+                    String schoolLocation = cursor.getString(2);
+                    String schoolDescription = cursor.getString(3);
+                    String schoolWebsite = cursor.getString(4);
+                    boolean schoolFavorite;
+                    if (cursor.getInt(5) == 0){
+                        schoolFavorite = false;
+                    }
+                    else{
+                        schoolFavorite = true;
+                    }
+                    String schoolEducation1 = cursor.getString(6);
+                    String schoolEducation2 = cursor.getString(7);
+                    String schoolEducation3 = cursor.getString(8);
+
+                    school newSchool = new school(customerID, schoolName, schoolLocation, schoolDescription, schoolWebsite,schoolFavorite, schoolEducation1, schoolEducation2, schoolEducation3);
                     returnList.add(newSchool);
                 }
             }

@@ -33,25 +33,24 @@ public class ListAdapter extends ArrayAdapter<school> {
         school p = getItem(position);
 
         if (p != null) {
-            TextView tt1 = (TextView) v.findViewById(R.id.tv_schoolname);
-            TextView tt2 = (TextView) v.findViewById(R.id.tv_schoollocation);
-            TextView tt3 = (TextView) v.findViewById(R.id.tv_schooleducation);
 
-            if (tt1 != null) {
-                tt1.setText(p.getName());
-            }
+                TextView tt1 = (TextView) v.findViewById(R.id.tv_schoolname);
+                TextView tt2 = (TextView) v.findViewById(R.id.tv_schoollocation);
+                TextView tt3 = (TextView) v.findViewById(R.id.tv_schooleducation);
 
-            if (tt2 != null) {
-                tt2.setText(p.getLocation());
-            }
-            if (tt3 != null) {
-                tt3.setText(p.getEducation1()+", "+p.getEducation2()+", "+p.getEducation3());
-            }
+                if (tt1 != null) {
+                    tt1.setText(p.getName());
+                }
+
+                if (tt2 != null) {
+                    tt2.setText(p.getLocation());
+                }
+                if (tt3 != null) {
+                    tt3.setText(p.getEducation1() + ", " + p.getEducation2() + ", " + p.getEducation3());
+                }
         }
 
 
         return v;
     }
-
-
 }

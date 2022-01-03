@@ -25,10 +25,11 @@ public class showSchool extends AppCompatActivity {
 
     TextView schoolName, location, description;
     Button websiteButton;
-    ImageView cancel, delete;
+    ImageView cancel, delete, favorite;
     ListView educationView;
     int schoolID;
-    View.OnClickListener cancelListener, deleteListener, websiteListener;
+    boolean isFavorite;
+    View.OnClickListener cancelListener, deleteListener, websiteListener, favoriteListener;
     String hrefWebsite;
 
     @Override
@@ -54,11 +55,20 @@ public class showSchool extends AppCompatActivity {
 
         cancel = (ImageView) findViewById(R.id.closeBt);
         delete = (ImageView) findViewById(R.id.deleteBt);
+        favorite = (ImageView) findViewById(R.id.favoriteBt);
+        isFavorite = i.getBooleanExtra("schoolFavorite", false);
+        if (isFavorite){
+            favorite.setColorFilter(getResources().getColor(R.color.gold));
+        }
+        else{
+            favorite.setColorFilter(getResources().getColor(R.color.black));
+        }
         schoolID =  Integer.valueOf(i.getStringExtra("schoolID"));
 
         cancelListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cancel.setColorFilter(getResources().getColor(R.color.red));
                 startActivity(new Intent(showSchool.this, MainActivity_searchpage.class));
             }
         }; cancel.setOnClickListener(cancelListener);
@@ -69,6 +79,7 @@ public class showSchool extends AppCompatActivity {
                 if(schoolID == -1){
                     Toast.makeText(showSchool.this, "Error deleting school", Toast.LENGTH_SHORT).show();
                 }
+                delete.setColorFilter(getResources().getColor(R.color.red));
                 dataBaseHelper.deleteOne(schoolID);
                 startActivity(new Intent(showSchool.this, MainActivity_searchpage.class));
             }
@@ -81,6 +92,27 @@ public class showSchool extends AppCompatActivity {
                 startActivity(i);
             }
         };websiteButton.setOnClickListener(websiteListener);
+
+        favoriteListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean setFavorite;
+                if (isFavorite){
+                    favorite.setColorFilter(getResources().getColor(R.color.black));
+                    setFavorite = false;
+                    isFavorite = false;
+                    Toast.makeText(showSchool.this, i.getStringExtra("schoolName") + " wurde als Favorit entfernt.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    favorite.setColorFilter(getResources().getColor(R.color.gold));
+                    setFavorite = true;
+                    isFavorite = true;
+                    Toast.makeText(showSchool.this, i.getStringExtra("schoolName") + " wurde als Favorit hinzugefügt.", Toast.LENGTH_SHORT).show();
+                }
+                dataBaseHelper.favoriteSchool(schoolID, setFavorite, showSchool.this);
+            }
+        }; favorite.setOnClickListener(favoriteListener);
+
 
         ArrayList<String> educationAr = i.getStringArrayListExtra("educationAr");
         ArrayAdapter<String> customAdapter = new ArrayAdapter<String>(showSchool.this, android.R.layout.simple_list_item_1,educationAr);

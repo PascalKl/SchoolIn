@@ -2,21 +2,28 @@ package com.example.schoolin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Adapter;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    DataBaseHelper dataBaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        recyclerView = (RecyclerView) findViewById(R.id.rc_view);
+        ListAdapter2 customAdapter = new ListAdapter2(dataBaseHelper.getEveryoneIsFavorite());
+        recyclerView.setAdapter(customAdapter);
         //Hide Actionbar
         getSupportActionBar().hide();
 

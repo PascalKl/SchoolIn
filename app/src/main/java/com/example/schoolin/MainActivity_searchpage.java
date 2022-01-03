@@ -106,6 +106,7 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
                 intent.putExtra("schoolLocation", clickedSchool.getLocation());
                 intent.putExtra("schoolDescription", clickedSchool.getDescription());
                 intent.putExtra("schoolWebsite", clickedSchool.getWebsite());
+                intent.putExtra("schoolFavorite",clickedSchool.isFavorite());
                 ArrayList<String> ar = new ArrayList<String>();
                 ar.add(clickedSchool.getEducation1());
                 ar.add(clickedSchool.getEducation2());
@@ -128,7 +129,9 @@ public class MainActivity_searchpage extends AppCompatActivity implements Serial
                     scrollView.setLayoutParams(layoutParams);
                     filterActive = true;
                     llCheckbox.setVisibility(View.VISIBLE);
+                    filterBt.setBackgroundColor(getResources().getColor(R.color.gray));
                 } else {
+                    filterBt.setBackgroundColor(getResources().getColor(R.color.lightblue));
                     layoutParams.setMargins(0, 200, 0, 56);
                     scrollView.setLayoutParams(layoutParams);
                     ArrayList<Integer> arrayList = new ArrayList<Integer>();
