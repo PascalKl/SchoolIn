@@ -142,10 +142,12 @@ public class newSchoolActivity extends AppCompatActivity {
                     case R.id.page_home:
                         //navigate to home page
                         startActivity(new Intent(newSchoolActivity.this, MainActivity.class));
+                        overridePendingTransition(0, 0);
                         break;
                     case R.id.page_search:
                         //navigate to search page (this activity)
                         startActivity(new Intent(newSchoolActivity.this, MainActivity_searchpage.class));
+                        overridePendingTransition(0, 0);
                         break;
                     case R.id.page_user:
                         //navigate to user (School) page

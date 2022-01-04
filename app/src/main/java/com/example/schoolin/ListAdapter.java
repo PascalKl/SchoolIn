@@ -14,11 +14,10 @@ public class ListAdapter extends ArrayAdapter<school> {
     private Context mContext;
     private int mode;
 
-    public ListAdapter(Context context, int resource, List<school> schools, int mode) {
+    public ListAdapter(Context context, int resource, List<school> schools) {
         super(context, resource, schools);
         this.resourceLayout = resource;
         this.mContext = context;
-        this.mode = mode;
     }
 
     @Override

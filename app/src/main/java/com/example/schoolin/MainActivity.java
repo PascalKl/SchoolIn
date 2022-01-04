@@ -35,13 +35,10 @@ public class MainActivity extends AppCompatActivity {
         RecyclerViewAdapter customAdapter = new RecyclerViewAdapter(dataBaseHelper.getEveryoneIsFavorite(), new RecyclerViewAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(school clickedSchoolId) {
-                //declare new intent
                 Intent intent = new Intent(MainActivity.this, showSchool.class);
 
-                //get clicked school class
                 school clickedSchool = dataBaseHelper.showOne(clickedSchoolId);
 
-                //give any important data to showSchool-page
                 intent.putExtra("schoolID", clickedSchool.getId());
                 intent.putExtra("schoolName", clickedSchool.getName());
                 intent.putExtra("schoolLocation", clickedSchool.getLocation());
@@ -49,20 +46,15 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("schoolWebsite", clickedSchool.getWebsite());
                 intent.putExtra("schoolFavorite",clickedSchool.isFavorite());
                 intent.putExtra("page","home");
-                //get educations as arraylist
                 ArrayList<String> ar = new ArrayList<String>();
                 ar.add(clickedSchool.getEducation1());
                 ar.add(clickedSchool.getEducation2());
                 ar.add(clickedSchool.getEducation3());
-                //give the educations array to intent
                 intent.putStringArrayListExtra("educationAr", ar);
-                //start the showSchool page
                 startActivity(intent);
             }
         });
-        //set orientation of recycler view to horizontal
         view.setLayoutManager(horizontalLayoutManager);
-        //set adapter
         view.setAdapter(customAdapter);
 
         //Hide Actionbar
@@ -82,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.page_search:
                         //navigate to search page
                         startActivity(new Intent(MainActivity.this, MainActivity_searchpage.class));
+                        overridePendingTransition(0, 0);
                         break;
                     case R.id.page_user:
                         //navigate to user (School) page
                         startActivity(new Intent(MainActivity.this, newSchoolActivity.class));
+                        overridePendingTransition(0, 0);
                         break;
                 }
                 return true;
@@ -93,5 +87,3 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 }
-
-
