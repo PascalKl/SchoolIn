@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/caption1"
-            android:text="Angebotene Profile"
+            android:text="Angebotene Profil"
             android:textSize="20dp"
             android:layout_marginLeft="10dp"
             android:gravity="left"/>
