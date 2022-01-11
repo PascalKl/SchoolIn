@@ -35,7 +35,7 @@ public class MainActivity_searchpage extends AppCompatActivity{
     EditText searchConsole;
     Button filterBt;
     View.OnClickListener listenerFilter;
-    ScrollView scrollView;
+    LinearLayout linearView;
     LinearLayout llCheckbox;
     CheckBox chbMINT, chbLanguage, chbSocialSciences, chbAesthetics, chbPE;
 
@@ -49,7 +49,7 @@ public class MainActivity_searchpage extends AppCompatActivity{
         filterBt = (Button) findViewById(R.id.filter_bt);
         lv_school = (ListView) findViewById(R.id.schoollist);
         searchConsole = (EditText) findViewById(R.id.search);
-        scrollView = (ScrollView) findViewById(R.id.scrollview1);
+        linearView = (LinearLayout) findViewById(R.id.linearlayout_1);
 
         llCheckbox = (LinearLayout) findViewById(R.id.linearlayout_checkbox);
         chbMINT = (CheckBox) findViewById(R.id.checkbox_mint);
@@ -107,17 +107,17 @@ public class MainActivity_searchpage extends AppCompatActivity{
         listenerFilter = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) scrollView.getLayoutParams();
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) linearView.getLayoutParams();
                 if (!filterActive) {
                     layoutParams.setMargins(0, 1100, 0, 56);
-                    scrollView.setLayoutParams(layoutParams);
+                    linearView.setLayoutParams(layoutParams);
                     filterActive = true;
                     llCheckbox.setVisibility(View.VISIBLE);
                     filterBt.setBackgroundColor(getResources().getColor(R.color.gray));
                 } else {
                     filterBt.setBackgroundColor(getResources().getColor(R.color.lightblue));
                     layoutParams.setMargins(0, 200, 0, 56);
-                    scrollView.setLayoutParams(layoutParams);
+                    linearView.setLayoutParams(layoutParams);
                     ArrayList<String> arrayList = new ArrayList<String>();
                     int i = 0; //i describes the number of activated checkboxes
                     if (chbMINT.isChecked()) {

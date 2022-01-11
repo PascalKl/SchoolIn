@@ -89,7 +89,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         ContentValues cv = new ContentValues();
         cv.put(COLUMN_SCHOOL_FAVORITE, isFavorite);
         db.update(SCHOOL_TABLE, cv, COLUMN_ID+"=?",new String[] {String.valueOf(schoolID)});
-        Toast.makeText(context, cv+"", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(context, cv+"", Toast.LENGTH_SHORT).show();
         db.close();
     }
     public void deleteOne(int schoolID){

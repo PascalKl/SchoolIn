@@ -56,23 +56,18 @@
                 android:text="Sport"
                 android:id="@+id/checkbox_sport"/>
         </LinearLayout>
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:fillViewport="true"
-    android:layout_marginBottom="56dp"
-    android:layout_marginTop="45dp"
-    android:background="@color/white"
-    android:id="@+id/scrollview1">
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/white"
+        android:layout_marginBottom="56dp"
+        android:layout_marginTop="45dp"
+        android:id="@+id/linearlayout_1"
         xmlns:android="http://schemas.android.com/apk/res/android"
         >
         <ListView
-            android:layout_height="700dp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:id="@+id/schoollist"
             android:divider="@android:color/white"
@@ -80,7 +75,5 @@
             android:paddingLeft="10dp"
             android:paddingRight="15dp"/>
     </LinearLayout>
-</ScrollView>
-
     <include layout="@layout/navbottom" />
 </RelativeLayout>
